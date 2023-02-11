@@ -1,6 +1,6 @@
 library(reticulate)
 
-setwd('/roots/scripts')
+setwd('/root/scripts')
 
 # Just a test
 cat("\nTest python and reticulate...\n")
