@@ -1,2 +1,2 @@
 def hello_py():
-  print "Hello Python!"
+  print("Hello Python!")
