@@ -7,10 +7,10 @@ source("~/scripts/extract_7z.R")
 extract.all.7z()
 
 
-library(devtools)
-devtools::load_all("/root/ExtractSciTab")
-devtools::load_all("/root/repboxStata")
-devtools::load_all("/root/repboxMain")
+suppressPackageStartupMessages(library(devtools))
+suppressPackageStartupMessages(devtools::load_all("/root/ExtractSciTab"))
+suppressPackageStartupMessages(devtools::load_all("/root/repboxStata"))
+suppressPackageStartupMessages(devtools::load_all("/root/repboxMain"))
 
 # Writen files can be changed and read by all users
 # So different containers can access them
