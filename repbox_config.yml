@@ -1,20 +1,2 @@
-# Configuration for Repbox
-
-# Repository type where supplement is stored
-#
-# local: No repository. ZIP file of supplement is in supplement_zip folder
-#
-# oi: OpenICPSR, a public repository
-#
-# private_oi: private OpenICPSR (used during submission process)
-
 repo_type: oi
-
-# The id by which the repository can be accessed
-# Examples based on repo_type
-#
-# oi: 112829
-
-repo_id: 112829
-
-
+repo_id: '179821'
