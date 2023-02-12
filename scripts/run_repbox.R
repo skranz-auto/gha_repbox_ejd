@@ -29,7 +29,7 @@ stata.opts = repbox.stata.opts(report.inside.program = TRUE,all.do.timeout = 60*
 
 init.repbox.project(project.dir,sup.zip=zip.file, pdf.files = pdf.file)
 
-update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=TRUE, make.ejd.html=FALSE, make.rstudio.html = FALSE, stata.opts = stata.opts)
+update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=FALSE, make.ejd.html=TRUE, make.rstudio.html = FALSE, stata.opts = stata.opts)
 
 slimify.solved.project(project.dir, max.log.mb = 0, max.cmd.mb = 0,max.stata.res.mb = 10)
 
