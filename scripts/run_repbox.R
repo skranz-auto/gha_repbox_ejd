@@ -31,7 +31,7 @@ init.repbox.project(project.dir,sup.zip=zip.file, pdf.files = pdf.file)
 
 update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=FALSE, make.ejd.html=TRUE, make.rstudio.html = FALSE, stata.opts = stata.opts)
 
-slimify.solved.project(project.dir, max.log.mb = 0, max.cmd.mb = 0,max.stata.res.mb = 10)
+slimify.solved.project(project.dir, max.log.mb = 0, max.cmd.mb = 0,max.stata.res.mb = 10, keep.org.code = TRUE)
 
 
 system("chmod -R 777 /root/projects")
