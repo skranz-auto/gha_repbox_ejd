@@ -1,6 +1,8 @@
 # This script will be run by a repbox analysis docker container
 # Author: Sebastian Kranz
 
+cat("\n\nREPBOX ANALYSIS START\n")
+
 source("~/scripts/download_oi.R")
 
 source("~/scripts/extract_7z.R")
@@ -43,3 +45,6 @@ key = Sys.getenv("REPBOX_PKG_KEY")
 to.7z("/root/projects/project","/root/output/project.7z",password = key)
 
 cat(paste0("\nAnalysis finished after ", round(difftime(Sys.time(),start.time, units="mins"),1)," minutes.\n"))
+
+cat("\n\nREPBOX ANALYSIS END\n")
+
