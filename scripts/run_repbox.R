@@ -46,5 +46,14 @@ to.7z("/root/projects/project","/root/output/project.7z",password = key)
 
 cat(paste0("\nAnalysis finished after ", round(difftime(Sys.time(),start.time, units="mins"),1)," minutes.\n"))
 
+cat("\nCPU INFO START\n\n")
+system("cat /proc/cpuinfo")
+cat("\nCPU INFO END\n\n")
+
+cat("\nMEMORY INFO START\n\n")
+system("cat /proc/meminfo")
+cat("\nMEMORY INFO END\n\n")
+
+
 cat("\n\nREPBOX ANALYSIS END\n")
 
