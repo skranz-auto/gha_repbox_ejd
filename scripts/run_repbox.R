@@ -39,8 +39,8 @@ init.repbox.project(project.dir,sup.zip=zip.file, pdf.files = pdf.file)
 
 all.files = list.files(file.path(project.dir, "org"),glob2rx("*.*"),recursive = TRUE, full.names = TRUE)
 org.mb = sum(file.size(all.files),na.rm = TRUE) / 1e6
-cat("\n\nSUPPLEMENT NO FILES: ", length(all.files), "\n\n")
-cat("\n\nSUPPLEMENT UNPACKED SIZE: ", round(org.mb,2), " MB\n\n")
+cat("\nSUPPLEMENT NO FILES: ", length(all.files), "\n")
+cat("\nSUPPLEMENT UNPACKED SIZE: ", round(org.mb,2), " MB\n")
 
 # Check if there are any do files
 do.files = list.files(file.path(project.dir, "org"),glob2rx("*.do"),recursive = TRUE)
