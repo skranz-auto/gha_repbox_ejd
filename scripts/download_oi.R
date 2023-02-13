@@ -3,9 +3,9 @@ library(reticulate)
 setwd('/root/scripts')
 
 # Just a test
-cat("\nTest python and reticulate...\n")
-reticulate::source_python("hello.py")
-hello_py()
+#cat("\nTest python and reticulate...\n")
+#reticulate::source_python("hello.py")
+#hello_py()
 
 cat("\nDownload repository...")
 reticulate::source_python("download_oicpsr.py")
