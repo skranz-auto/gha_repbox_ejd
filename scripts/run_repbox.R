@@ -23,7 +23,7 @@ project.dir = "~/projects/project"
 
 try({
   art = readRDS(file.path(project.dir,"meta","ejd_art.Rds"))
-  cat("\n\nnAnalyse ", art$id,": ", art$title,"\n")
+  cat("\n\nAnalyse ", art$id,":\n ", art$title,"\n")
 })
 
 zip.file = list.files("~/zip",glob2rx("*.zip"), full.names=TRUE)
@@ -37,9 +37,9 @@ stata.opts = repbox.stata.opts(report.inside.program = TRUE,all.do.timeout = 60*
 
 init.repbox.project(project.dir,sup.zip=zip.file, pdf.files = pdf.file)
 
-all.files = list.files(file.path(project.dir, "org"),glob2rx("*.do"),recursive = TRUE)
+all.files = list.files(file.path(project.dir, "org"),glob2rx("*.*"),recursive = TRUE)
 
-org.mb = sum(file.size(all.files)) / 1e6
+org.mb = sum(file.size(all.files),na.rm = TRUE) / 1e6
 cat("\n\nSUPPLEMENT UNPACKED SIZE: ", round(org.mb,2), " MB\n\n")
 
 # Check if there are any do files
