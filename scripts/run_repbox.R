@@ -1,6 +1,7 @@
 # This script will be run by a repbox analysis docker container
 # Author: Sebastian Kranz
 
+
 cat("\n\nREPBOX ANALYSIS START\n")
 
 source("~/scripts/download_oi.R")
@@ -20,6 +21,11 @@ Sys.umask("000")
 
 project.dir = "~/projects/project"
 
+try({
+  art = readRDS(file.path(project.dir,"meta","ejd_art.Rds"))
+  cat("\n\nnAnalyse ", art$id,": ", art$title,"\n")
+})
+
 zip.file = list.files("~/zip",glob2rx("*.zip"), full.names=TRUE)
 #pdf.file = list.files("~/pdf",glob2rx("*.pdf"), full.names=TRUE)
 pdf.file = NULL
@@ -31,7 +37,18 @@ stata.opts = repbox.stata.opts(report.inside.program = TRUE,all.do.timeout = 60*
 
 init.repbox.project(project.dir,sup.zip=zip.file, pdf.files = pdf.file)
 
-update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=FALSE, make.ejd.html=TRUE, make.rstudio.html = FALSE, stata.opts = stata.opts)
+all.files = list.files(file.path(project.dir, "org"),glob2rx("*.do"),recursive = TRUE)
+
+org.mb = sum(file.size(all.files)) / 1e6
+cat("\n\nSUPPLEMENT UNPACKED SIZE: ", round(org.mb,2), " MB\n\n")
+
+# Check if there are any do files
+do.files = list.files(file.path(project.dir, "org"),glob2rx("*.do"),recursive = TRUE)
+if (length(do.files)>0) {
+  update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=FALSE, make.ejd.html=TRUE, make.rstudio.html = FALSE, stata.opts = stata.opts)
+} else {
+  cat("\nProject has no do files.\n")
+}
 
 slimify.solved.project(project.dir, max.log.mb = 0, max.cmd.mb = 0,max.stata.res.mb = 10, keep.org.code = TRUE)
 
@@ -40,7 +57,7 @@ system("chmod -R 777 /root/projects")
 
 # Store results as encrypted 7z
 cat("\nStore results as 7z")
-dir.create("/root/output")
+#dir.create("/root/output")
 key = Sys.getenv("REPBOX_PKG_KEY")
 to.7z("/root/projects/project","/root/output/project.7z",password = key)
 
