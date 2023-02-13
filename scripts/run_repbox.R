@@ -36,5 +36,10 @@ slimify.solved.project(project.dir, max.log.mb = 0, max.cmd.mb = 0,max.stata.res
 
 system("chmod -R 777 /root/projects")
 
+# Store results as encrypted 7z
+cat("\nStore results as 7z")
+dir.create("/root/output")
+key = Sys.getenv("REPBOX_PKG_KEY")
+to.7z("/root/projects","/root/output/project.7z",password = key)
 
 cat(paste0("\nAnalysis finished after ", round(difftime(Sys.time(),start.time, units="mins"),1)," minutes.\n"))

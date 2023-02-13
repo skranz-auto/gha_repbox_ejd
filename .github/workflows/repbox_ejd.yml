@@ -19,4 +19,4 @@ jobs:
       with:
         name: repbox_ejd_results
 #        path: ${{ github.workspace }}/project
-        path: ${{ github.workspace }}/project/repbox
+        path: ${{ github.workspace }}/output/project.7z
