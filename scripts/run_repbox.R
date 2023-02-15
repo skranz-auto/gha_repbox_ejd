@@ -4,7 +4,7 @@
 
 cat("\n\nREPBOX ANALYSIS START\n")
 
-source("~/scripts/download_oi.R")
+source("~/scripts/download.R")
 
 source("~/scripts/extract_7z.R")
 extract.all.7z()
