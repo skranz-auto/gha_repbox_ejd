@@ -1,4 +1,4 @@
-config = yaml::yaml.load_file("../repbox_config.yml")
+config = yaml::yaml.load_file("/home/repbox_config.yml")
 repo_type = config$repo_type
 
 if (repo_type == "zip_url") {
