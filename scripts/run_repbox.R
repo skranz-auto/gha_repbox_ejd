@@ -50,7 +50,7 @@ if (length(do.files)>0) {
   cat("\nProject has no do files.\n")
 }
 
-slimify.solved.project(project.dir, max.log.mb = 0, max.cmd.mb = 0,max.stata.res.mb = 10, keep.org.code = TRUE)
+try(slimify.solved.project(project.dir, max.log.mb = 0, max.cmd.mb = 0,max.stata.res.mb = 10, keep.org.code = TRUE))
 
 
 system("chmod -R 777 /root/projects")
