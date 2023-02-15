@@ -5,6 +5,7 @@ cat("\nRepotype = ", repo_type,"\n")
 if (repo_type == "zip_url") {
   url = config$url
   cat("\nDownload supplement from ", url,"\n")
+  options(timeout=60*60)
   download.file(url, "/root/zip/supplement.zip")
 } else if (repo_type == "oi") {
   source("~/scripts/download_oi.R")
