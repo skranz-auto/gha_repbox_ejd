@@ -49,21 +49,19 @@ rownames(fi) = NULL
 fi$file = files
 fi$base = basename(files)
 fi$ext = tools::file_ext(files)
-if (!dir.exists(file.path(project.dir,"repbox"))) 
+if (!dir.exists(file.path(project.dir,"repbox")))
   dir.create(file.path(project.dir,"repbox"))
 saveRDS(fi,file.path(project.dir,"repbox/org_files.Rds"))
-saveRDS(fi,file.path(project.dir,"meta/org_files.Rds"))
-
-
+saveRDS(fi,file.path(project.dir,"gha/org_files.Rds"))
 
 
 # Check if there are any do files
 do.files = list.files(file.path(project.dir, "org"),glob2rx("*.do"),recursive = TRUE)
-if (length(do.files)>0) {
-  update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=FALSE, make.ejd.html=TRUE, make.rstudio.html = FALSE, stata.opts = stata.opts)
-} else {
-  cat("\nProject has no do files.\n")
+if (length(do.files)==0) {
+  cat("\nProject seems to have no do files.\n")
 }
+
+try(update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=FALSE, make.ejd.html=TRUE, make.rstudio.html = FALSE, stata.opts = stata.opts))
 
 try(slimify.solved.project(project.dir, max.log.mb = 0, max.cmd.mb = 0,max.stata.res.mb = 10, keep.org.code = TRUE))
 
