@@ -42,6 +42,21 @@ org.mb = sum(file.size(all.files),na.rm = TRUE) / 1e6
 cat("\nSUPPLEMENT NO FILES: ", length(all.files), "\n")
 cat("\nSUPPLEMENT UNPACKED SIZE: ", round(org.mb,2), " MB\n")
 
+# Store file info: Can be used from EJD even if no do file exists
+files = all.files
+fi = as.data.frame(file.info(files))
+rownames(fi) = NULL
+fi$file = files
+fi$base = basename(files)
+fi$ext = tools::file_ext(files)
+if (!dir.exists(file.path(project.dir,"repbox"))) 
+  dir.create(file.path(project.dir,"repbox"))
+saveRDS(fi,file.path(project.dir,"repbox/org_files.Rds"))
+saveRDS(fi,file.path(project.dir,"meta/org_files.Rds"))
+
+
+
+
 # Check if there are any do files
 do.files = list.files(file.path(project.dir, "org"),glob2rx("*.do"),recursive = TRUE)
 if (length(do.files)>0) {
