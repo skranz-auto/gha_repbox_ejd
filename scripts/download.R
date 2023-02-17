@@ -2,7 +2,7 @@ config = yaml::yaml.load_file("/root/repbox_config.yml")
 repo_type = config$repo_type
 
 cat("\nRepotype = ", repo_type,"\n")
-if (repo_type == "zip_url") {
+if (repo_type == "zip_url" | repo_type == "dv") {
   url = config$url
   cat("\nDownload supplement from ", url,"\n")
   options(timeout=60*60)
