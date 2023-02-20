@@ -9,5 +9,11 @@ if (repo_type == "zip_url" | repo_type == "dv") {
   download.file(url, "/root/zip/supplement.zip")
 } else if (repo_type == "oi") {
   source("~/scripts/download_oi.R")
+} else if (repo_type == "ze") {
+  repo_id = config$repo_id
+  cat("\nDownload Zenodo supplement ", repo_id,"\n")
+  source("~/scripts/download_ze.R")
+  options(timeout=60*60)
+  download_zenodo_zip(repo_id, "/root/zip")
 }
 
