@@ -16,6 +16,7 @@ jobs:
     - name: Docker Run Action
       run: docker run --rm --name gha_repbox_ejd --env REPBOX_PKG_KEY="${{ secrets.REPBOX_PKG_KEY }}" --env REPBOX_ARTICLE_KEY="${{ secrets.REPBOX_ARTICLE_KEY }}" --env OI_EMAIL="${{ secrets.OI_EMAIL }}" --env OI_PASSWORD="${{ secrets.OI_PASSWORD }}" -v $GITHUB_WORKSPACE/pkgs:/root/pkgs:rw -v $GITHUB_WORKSPACE/project:/root/projects/project:rw -v $GITHUB_WORKSPACE/supplement_zip:/root/zip -v $GITHUB_WORKSPACE/article_pdf:/root/pdf -v $GITHUB_WORKSPACE/scripts/:/root/scripts/:rw -v $GITHUB_WORKSPACE/project:/root/projects/project:rw -v $GITHUB_WORKSPACE/output:/root/output:rw skranz/gha_repbox_ejd R -e 'Sys.setenv("PATH" = paste(Sys.getenv("PATH"),"/usr/local/stata/",sep=":")); source("~/scripts/run_repbox.R")'
     - uses: actions/upload-artifact@v3
+      if: always() # Also run if there was an error in the previous step
       with:
         name: repbox_ejd_results
 #        path: ${{ github.workspace }}/project
