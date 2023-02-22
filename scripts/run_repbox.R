@@ -104,7 +104,7 @@ store.results = function(status = "ok") {
 cat("\n\nREPBOX ANALYSIS START\n")
 
 status = try(run_repbox())
-if (is(res,"try-error")) {
+if (is(status,"try-error")) {
   status = "status"
 }
 
