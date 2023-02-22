@@ -92,6 +92,7 @@ run_repbox = function() {
 }
 
 store.results = function(status = "ok") {
+  source("~/scripts/extract_7z.R")
   system("chmod -R 777 /root/projects")
   # Write current status
   writeLines(status, "/root/projects/project/gha/gha_inner_status.txt")
