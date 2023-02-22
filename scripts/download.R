@@ -17,3 +17,6 @@ if (repo_type == "zip_url" | repo_type == "dv") {
   download_zenodo_zip(repo_id, "/root/zip")
 }
 
+cat("\nResulting content of download folder: /root/zip\n")
+print(list.files("/root/zip/"))
+cat("\n")
