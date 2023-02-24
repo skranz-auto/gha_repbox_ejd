@@ -1,3 +1,3 @@
 comment: Re-run after bugfix in repboxStata.
-repo_type: dv
-url: http://dataverse.harvard.edu/api/access/dataset/:persistentId/?persistentId=doi:10.7910/DVN/69JI12
+repo_type: zip_url
+url: http://econ.mathematik.uni-ulm.de/repbox_temp/aHX1anBQws73bs2r2arewmgTva.zip

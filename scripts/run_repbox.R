@@ -42,6 +42,17 @@ run_repbox = function() {
   
   init.repbox.project(project.dir,sup.zip=zip.file, pdf.files = pdf.file)
   
+  # Delete ZIP file in order to reduce disk space
+  
+  cat("\nFree disk space before running code:\n")
+  system("df")
+  try({
+    cat("\nRemove zip.file to free disk space.")
+    file.remove(zip.file)
+    cat("\nFree disk space after removing ZIP file:\n")
+    system("df")
+  })
+  
   all.files = list.files(file.path(project.dir, "org"),glob2rx("*.*"),recursive = TRUE, full.names = TRUE)
   org.mb = sum(file.size(all.files),na.rm = TRUE) / 1e6
   cat("\nSUPPLEMENT NO FILES: ", length(all.files), "\n")
@@ -60,7 +71,7 @@ run_repbox = function() {
   saveRDS(fi,file.path(project.dir,"gha/org_files.Rds"))
   
   
-  try(update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=FALSE, make.ejd.html=TRUE, make.rstudio.html = FALSE, stata.opts = stata.opts))
+  try(update.repbox.project(project.dir,run.lang = "stata", make.matching = FALSE,make.report.html = FALSE, make.html=FALSE, make.ejd.html=TRUE, make.rstudio.html = FALSE, stata.opts = stata.opts,slimify.org = TRUE))
   
   # Check if there are any do files
   do.files = c(
