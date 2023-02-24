@@ -1,4 +1,9 @@
 config = yaml::yaml.load_file("/root/repbox_config.yml")
+
+if (!is.null(config$comment)) {
+  try(cat(paste0("\nComment: ", config$comment,"\n")))
+}
+
 repo_type = config$repo_type
 options(timeout=60*60)
 
