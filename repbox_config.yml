@@ -1,2 +1,2 @@
-repo_type: dv
-url: http://dataverse.harvard.edu/api/access/dataset/:persistentId/?persistentId=doi:10.7910/DVN/FKX6ZW
+repo_type: zip_url
+url: https://www.econometricsociety.org/publications/econometrica/2023/03/01/Dynamic-Spatial-General-Equilibrium/supp/20273_Data_and_Programs.zip
